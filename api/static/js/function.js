@@ -18,7 +18,7 @@ function joinRoom() {
         return;
     }
 
-    ws = new WebSocket(`wss://bubbleshare-production.up.railway.app/ws/${roomId}`);
+    ws = new WebSocket(`wss://bubbleshare.up.railway.app/ws/${roomId}`);
 
     ws.onopen = () => {
         console.log("Connected to WebSocket!");
