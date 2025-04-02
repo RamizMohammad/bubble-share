@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Share Bubble</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔗 File Share Bubble</h1>
+        <p>Instantly share files with a group using a unique room code.</p>
+
+        <div class="join-box">
+            <input type="text" id="roomId" placeholder="Enter Room Code">
+            <button onclick="joinRoom()">Join Room</button>
+        </div>
+
+        <p>or</p>
+        <button class="generate-btn" onclick="generateRoomId()">🔄 Generate Room ID</button>
+        <p id="generatedRoomId"></p>
+
+        <div id="fileSection" class="hidden">
+            <h3>Connected! Share Files:</h3>
+            <label class="file-upload">
+                <input type="file" id="fileInput">
+                📁 Choose File
+            </label>
+            <button class="send-btn" onclick="sendFile()">📤 Send File</button>
+
+            <h3>📂 Received Files:</h3>
+            <div id="fileList" class="file-list"></div>
+        </div>
+    </div>
+
+    <script src="../static/function.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Headings */
+h1 {
+    color: #4A90E2;
+}
+
+p {
+    color: #666;
+}
+
+/* Join Room Box */
+.join-box {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.join-box input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.join-box button {
+    background: #4A90E2;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.join-box button:hover {
+    background: #357ABD;
+}
+
+/* Generate Room ID Button */
+.generate-btn {
+    background: #ff9800;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.generate-btn:hover {
+    background: #e68900;
+}
+
+/* File Section */
+.hidden {
+    display: none;
+}
+
+#fileSection {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* File Upload */
+.file-upload {
+    display: inline-block;
+    background: #eee;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-upload input {
+    display: none;
+}
+
+/* Send Button */
+.send-btn {
+    background: #28A745;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.send-btn:hover {
+    background: #218838;
+}
+
+/* File List */
+.file-list {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.file-list a {
+    display: block;
+    color: #4A90E2;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.file-list a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .join-box {
+        flex-direction: column;
+    }
+}
