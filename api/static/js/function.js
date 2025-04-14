@@ -46,26 +46,52 @@ async function sendFile() {
         return;
     }
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    const totalSize = file.size;
+    const chunkSize = 1024 * 1024; // 1 MB
+    let offset = 0;
 
-    reader.onload = () => {
-        ws.send(JSON.stringify({
-            type: "file",
-            fileName: file.name,
-            data: reader.result
-        }));
-    };
+    const progressBar = document.getElementById("sendProgress");
+
+    while (offset < totalSize) {
+        const chunk = file.slice(offset, offset + chunkSize);
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const base64Data = reader.result.split(',')[1]; // Remove data URL prefix
+            ws.send(JSON.stringify({
+                type: "file",
+                fileName: file.name,
+                data: base64Data,
+                totalSize: totalSize
+            }));
+
+            offset += chunkSize;
+            const progress = Math.min((offset / totalSize) * 100, 100);
+            progressBar.style.width = progress + "%";
+        };
+
+        reader.readAsDataURL(chunk);
+    }
 }
 
 function displayReceivedFile(fileName, fileData) {
     const fileList = document.getElementById("fileList");
-    
+
     const link = document.createElement("a");
     link.href = fileData;
     link.download = fileName;
     link.innerText = `📥 Download ${fileName}`;
-    
+
     fileList.appendChild(link);
     fileList.appendChild(document.createElement("br"));
+
+    // Update receive progress bar (this can be improved to be more accurate based on chunked receiving)
+    const progressBar = document.getElementById("receiveProgress");
+    progressBar.style.width = "100%";
+}
+
+function showFileName() {
+    const fileInput = document.getElementById("fileInput");
+    const fileName = fileInput.files[0]?.name || "No file selected";
+    document.getElementById("fileNameDisplay").innerText = `Selected File: ${fileName}`;
 }
