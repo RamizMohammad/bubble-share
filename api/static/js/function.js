@@ -52,17 +52,20 @@ async function sendFile() {
 
     const progressBar = document.getElementById("sendProgress");
 
+    // Show progress bar while sending file
     while (offset < totalSize) {
         const chunk = file.slice(offset, offset + chunkSize);
         const reader = new FileReader();
 
         reader.onload = () => {
             const base64Data = reader.result.split(',')[1]; // Remove data URL prefix
+
             ws.send(JSON.stringify({
                 type: "file",
                 fileName: file.name,
                 data: base64Data,
-                totalSize: totalSize
+                totalSize: totalSize,
+                offset: offset
             }));
 
             offset += chunkSize;
